@@ -61,6 +61,11 @@ class AllTabScreen extends Component {
           <ImageBackground source={{ uri: item.thumbnail }} style={styles.thumbnail}>
           <Text style={styles.titleText}>{item.title}</Text>
           <Text style={styles.titleText}>Author Name:{item.author}</Text>
+          <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+              <Image style={{height:20,width:20,marginTop:120,marginHorizontal:20}} source={require('../images/messenger.png')}></Image>
+              <Image style={{height:20,width:20,marginTop:120,marginHorizontal:20}} source={require('../images/heart.png')}></Image>
+              <Image style={{height:20,width:20,marginTop:120,marginHorizontal:20}} source={require('../images/upload.png')}></Image>
+          </View>
           </ImageBackground>
         </View>
       </TouchableOpacity>

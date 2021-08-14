@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, StyleSheet, Dimensions, TouchableOpacity, Image, TextInput, Alert ,ImageBackground } from 'react-native';
+import { Text, View, FlatList, StyleSheet, Dimensions, TouchableOpacity, Image, TextInput, Alert, ImageBackground } from 'react-native';
 import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
@@ -33,9 +33,9 @@ class VideoTabScreen extends Component {
             "title": result.feed[i].title,
             "thumbnail": result.feed[i].thumbnail,
             "author": result.feed[i].author.name,
-            "type":result.feed[i].type,
-            "video_link":result.feed[i].video_link,
-            "description":result.feed[i].description
+            "type": result.feed[i].type,
+            "video_link": result.feed[i].video_link,
+            "description": result.feed[i].description
           })
         }
         this.setState({ feed_Array: value });
@@ -45,11 +45,11 @@ class VideoTabScreen extends Component {
       .catch(error => console.log('error', error));
   }
   goToScreen = (item) => {
-    if(item.type=="video"){
-      this.props.navigation.navigate('VideoPlayScreen', { Video_Url: item.video_link,thumbnail:item.thumbnail }); 
+    if (item.type == "video") {
+      this.props.navigation.navigate('VideoPlayScreen', { Video_Url: item.video_link, thumbnail: item.thumbnail });
     }
-    else if(item.type=="article"){
-      this.props.navigation.navigate('ArticleDisplayScreen', { thumbnail_Value: item.thumbnail,description:item.description }); 
+    else if (item.type == "article") {
+      this.props.navigation.navigate('ArticleDisplayScreen', { thumbnail_Value: item.thumbnail, description: item.description });
     }
   }
   renderItemfeed(item) {
@@ -57,8 +57,13 @@ class VideoTabScreen extends Component {
       <TouchableOpacity onPress={() => this.goToScreen(item)}>
         <View style={styles.CardContainerStyle}>
           <ImageBackground source={{ uri: item.thumbnail }} style={styles.thumbnail}>
-          <Text style={styles.titleText}>{item.title}</Text>
-          <Text style={styles.titleText}>Author Name:{item.author}</Text>
+            <Text style={styles.titleText}>{item.title}</Text>
+            <Text style={styles.titleText}>Author Name:{item.author}</Text>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              <Image style={{ height: 20, width: 20, marginTop: 120, marginHorizontal: 20 }} source={require('../images/messenger.png')}></Image>
+              <Image style={{ height: 20, width: 20, marginTop: 120, marginHorizontal: 20 }} source={require('../images/heart.png')}></Image>
+              <Image style={{ height: 20, width: 20, marginTop: 120, marginHorizontal: 20 }} source={require('../images/upload.png')}></Image>
+            </View>
           </ImageBackground>
         </View>
       </TouchableOpacity>
@@ -83,10 +88,10 @@ class VideoTabScreen extends Component {
           style={{
             borderRadius: 25,
             borderColor: 'black',
-            borderWidth:1,
+            borderWidth: 1,
             backgroundColor: '#dddd',
             width: 350,
-            paddingHorizontal:20
+            paddingHorizontal: 20
           }}
           textStyle={{ color: '#000' }}
         />
@@ -146,8 +151,8 @@ const styles = StyleSheet.create({
     fontSize: hp('1.5%'),
     paddingHorizontal: 4,
     marginTop: 5,
-    color:'white',
-    fontWeight:'bold'
+    color: 'white',
+    fontWeight: 'bold'
   },
 })
 
